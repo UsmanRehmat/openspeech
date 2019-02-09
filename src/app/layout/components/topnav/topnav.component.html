@@ -1,0 +1,18 @@
+<mat-toolbar color="primary" class="fix-nav">
+    <button type="button" mat-icon-button class="visible-md" (click)="toggleSidebar()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <div class="nav-icon">
+        <img class="logo-size" src="assets/images/speech.png">
+    </div>
+    <div class="nav-icon">
+        Open Speech
+    </div>
+    
+    <span class="nav-spacer"></span>
+    <p>Hey {{name}}</p>
+    <button mat-icon-button (click)="onLoggedout()">
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
+    
+</mat-toolbar>

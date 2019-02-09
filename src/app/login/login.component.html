@@ -1,0 +1,57 @@
+<mat-spinner *ngIf="inProgress" [ngStyle]="{'position': 'absolute'}"  class="centered" ></mat-spinner>
+<div class="login-page">
+  <div class="content">
+      <form [formGroup]='Login' class="login-form" (ngSubmit)="OnLogin()">
+          <div class="text-center">
+              <h2 class="app-name">Login</h2>
+          </div>
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+              <div fxFlexFill>
+                  <mat-form-field class="w-100">
+                    <input matInput placeholder="Email" formControlName="emailFormControl">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                      Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+              </div>
+          </div>
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+              <div fxFlexFill>
+                  <mat-form-field class="w-100">
+                    <input type="password" matInput placeholder="Password" formControlName="passwordFormControl">
+                    
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                      Password is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+              </div>
+          </div>
+                    
+        <div fxFlex  fxLayout="row" fxLayout.lt-md="column" style="margin: 20px 0 30px 0">
+                <div fxFlex>
+                    <mat-checkbox color="primary">Remember Me</mat-checkbox>
+                </div>
+                <div fxFlex  fxLayoutAlign="end">
+                    <a (click)="Signup()" href="javascript:void(0)">New member? Register</a>
+                </div>
+            </div>
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column" >
+              <!-- <div>
+                  <button type="reset"  mat-raised-button  color="primary" class="w-100" (click)='CloseDialog()'>Close</button>
+              </div> -->
+              <div fxFlex>
+                  <button type="submit" mat-raised-button color="primary" class="w-100" [disabled]='Login.invalid' >Login</button>
+              </div>
+           
+          </div>
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+            <div fxFlexFill>
+              <p [style.color]='msgColor'>{{message}}</p>
+            </div>
+        </div>
+      </form>
+  </div>
+</div>

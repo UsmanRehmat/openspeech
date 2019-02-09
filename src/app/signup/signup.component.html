@@ -1,0 +1,117 @@
+<mat-spinner *ngIf="inProgress" [ngStyle]="{'position': 'absolute'}"  class="centered" ></mat-spinner>
+<div class="login-page">
+  <div class="content">
+      <form [formGroup]='SignUp' class="login-form" (ngSubmit)="OnSignUp()">
+          <div class="text-center">
+              <h2 [ngStyle]="{'margin-bottom': '10px'}" class="app-name">Registration</h2>
+          </div>
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+              <div fxFlexFill>
+                  <mat-form-field class="w-100">
+                    <input matInput placeholder="Full name" formControlName="userNameFormControl">
+                    <mat-error *ngIf="userNameFormControl.hasError('required')">
+                      Full name is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+              </div>
+          </div>
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+              <div fxFlexFill>
+                  <mat-form-field class="w-100">
+                    <input matInput placeholder="Email" formControlName="emailFormControl">
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf=" !emailFormControl.hasError('required') && emailFormControl.hasError('@itu.edu.pk')">
+                        Please enter valid institutional email (@itu.edu.pk)
+                      </mat-error>
+                    
+                  </mat-form-field>
+              </div>
+          </div>
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+              <div fxFlexFill>
+                  <mat-form-field class="w-100">
+                    <input type="password" matInput placeholder="Password" formControlName="passwordFormControl">
+                    <mat-error *ngIf="passwordFormControl.hasError('pattern') && !passwordFormControl.hasError('required')">
+                      Password should be of atleast 8 characters
+                    </mat-error>
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                      Password is <strong>required</strong>
+                    </mat-error>
+                    
+                  </mat-form-field>
+              </div>
+          </div>
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+            <div fxFlexFill>
+                <mat-form-field class="w-100">
+                  <input type="password" matInput placeholder="Confirm Password" formControlName="repeatPasswordFormControl">
+                    <mat-error *ngIf="repeatPasswordFormControl.hasError('mismatch') && !repeatPasswordFormControl.hasError('required')">
+                      Password mismatch
+                    </mat-error>
+                    <mat-error *ngIf="repeatPasswordFormControl.hasError('required')">
+                      Confirm Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+            <div fxFlexFill>
+                <mat-form-field class="w-100">
+                  <input matInput placeholder="Age" formControlName="ageFormControl">
+                  <mat-error *ngIf="ageFormControl.hasError('required')">
+                    Age is <strong>required</strong>
+                  </mat-error>
+                  <mat-error *ngIf="ageFormControl.hasError('pattern')">
+                      Age must be a number
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxFlex fxLayout="row"  fxLayout.lt-md="column" >
+            <div fxFlexFill>
+              <mat-form-field>
+                  <mat-select formControlName='genderFormControl' placeholder="Gender">
+                    <mat-option  *ngFor="let gender of genders" [value]=gender>
+                        {{gender}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxFlex fxLayout="row" class="mb-20" fxLayout.lt-md="column" style="margin: 0px 0px 0px 0px">
+          <div fxFlexFill>
+            <mat-form-field floatLabel="always">
+              <textarea class="terms-condition" disabled matInput placeholder="Terms and Conditions">{{termsCondition}} </textarea>
+            </mat-form-field>
+          </div>
+         </div>
+         <div fxFlex fxLayout="row" class="mb-20" fxLayout.lt-md="column" style="margin: 0px 0px 0px 0px">
+          <div fxFlex="50%">
+              <mat-checkbox formControlName='termConditionFormControl'>I accept these terms and condtions</mat-checkbox>
+          </div>
+          
+         </div>
+        
+          <div fxFlex fxLayout="row" fxLayoutGap="35px" fxLayout.lt-md="column" >
+              <!-- <div>
+                  <button type="reset"  mat-raised-button  color="primary" class="w-100" (click)='CloseDialog()'>Close</button>
+              </div> -->
+              
+              <div fxFlex>
+                  <button type="submit" mat-raised-button color="primary" class="w-100" [disabled]='SignUp.invalid' >Register</button>
+              </div>
+              <div fxFlex class="margin-top-8">
+                <a    (click)="LogIn()" href="javascript:void(0)" class="w-100" >Already a member? Login</a>
+              </div>
+           
+          </div>
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+            <div fxFlexFill>
+              <p [style.color]='msgColor'>{{message}}</p>
+            </div>
+        </div>
+      </form>
+  </div>
+</div>

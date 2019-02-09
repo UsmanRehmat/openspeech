@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" class="fix-nav mat-tollbar">
+    <button type="button" mat-icon-button class="visible-md" (click)="toggleSidebar()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <div class="nav-icon">
+        <img class="left-logo" src="assets/images/csalt.png">
+    </div>
+    <div fxLayout="row" [ngStyle]="{'margin-left': '23%'}" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <div fxFlex>
+            <p class="mat-p">Copyright &copy; Center for Speech and Language Technologies | Information Technology University</p>
+        </div>
+    </div>
+    <span class="nav-spacer"></span>
+    <div class="nav-icon" [ngStyle]="{'margin-right': '30px'}">
+        <img class="right-logo" src="assets/images/itu_logo.png">
+    </div>
+</mat-toolbar>
